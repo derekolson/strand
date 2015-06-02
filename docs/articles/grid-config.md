@@ -103,4 +103,4 @@ Defining `<div field="...">` inside of an `mm-grid-item` allows us to override t
 	</mm-grid>
 ```
 
-####Continue Reading &#8594; [Data Integration with mm-grid](article_grid_data_integration.html)
+####Continue Reading &#8594; [Data Integration with mm-grid](/articles/grid-data-integration)
