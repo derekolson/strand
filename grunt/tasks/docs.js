@@ -110,7 +110,7 @@ module.exports = function(grunt) {
 				articleBody = marked(articleBody);
 
 				//Special Case for our index page
-				if (articleName === "getting_started") {
+				if (articleName === "getting-started") {
 					grunt.config.set("indexContent", articleBody);
 				}
 			}
@@ -143,7 +143,7 @@ module.exports = function(grunt) {
 			data: {
 				modules: [],
 				articles: [],
-				name: "getting_started",
+				name: "getting-started",
 				revision: "<%= pkg.version %>",
 				article: "<%= indexContent %>"
 			},
