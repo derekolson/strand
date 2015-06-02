@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 			var file = grunt.file.read(article),
 				name = file.split("\n")[0].replace("#",""),
 				key = path.basename(article, '.md'),
-				link = "article_" + key + ".html";
+				link = "articles/" + key + "/";
 			return {
 				key: key,
 				name: name,
@@ -124,7 +124,7 @@ module.exports = function(grunt) {
 				article: articleBody
 			};
 
-			articleConfig.files[grunt.config('docs_dir')+'/article_'+articleName+'.html'] = 'docs/article_template.html';
+			articleConfig.files[grunt.config('docs_dir')+'/articles/'+articleName+'/index.html'] = 'docs/article_template.html';
 			articleConfig.options.data = articleData;
 
 			grunt.config.set(["hogan_static","article_" + articleName], articleConfig);
