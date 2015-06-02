@@ -35,19 +35,22 @@ module.exports = function(grunt) {
 
 	});
 
-	grunt.registerTask('live', ['connect','watch']);
+	grunt.registerTask('live', ['connect:server','watch']);
 
 	grunt.config.set("watch", {
 		options: {
 			livereload:true,
 			hostname: '*'
 		},
+		configFiles: {
+			files: [ 'Gruntfile.js', 'grunt/tasks/*.js' ],
+			options: {
+				reload: true
+			}
+		},
 		modules: {
 			files: ['src/mm-*/*', '!doc.json', '!example.html'],
-			tasks: ['default'],//['sass:module','sassShadowFixLive','vulcanize:module'],
-			options: {
-				nospawn: true,
-			}
+			tasks: ['default']
 		},
 		sharedScss: {
 			files: ['src/shared/sass/*.scss'],
@@ -59,10 +62,7 @@ module.exports = function(grunt) {
 		},
 		docs: {
 			files: ['docs/*', 'src/mm-*/doc.json', 'src/mm-*/example.html'],
-			tasks: ['docs'],
-			options: {
-				nospawn: true,
-			}
+			tasks: ['build:docs']
 		},
 		index: {
 			files: ['mm-*/'],
@@ -99,6 +99,7 @@ module.exports = function(grunt) {
 	grunt.config.set("connect", {
 		server: {
 			options: {
+				open: true,
 				middleware: function(connect, options) {
 					return [
 					function(req, res, next) {
@@ -124,6 +125,12 @@ module.exports = function(grunt) {
 					})
 					];
 				}
+			}
+		},
+		docs: {
+			options: {
+				base: '<%= docs_dir %>',
+				open: true
 			}
 		}
 	});

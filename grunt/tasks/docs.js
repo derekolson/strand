@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 			moduleDoc.modules = moduleList;
 			moduleDoc.articleList = articleList;
 			moduleDoc.articleMap = articleMap;
-			moduleConfig.files[grunt.config('docs_dir')+'/'+moduleDoc.name+'.html'] = 'docs/component_template.html';
+			moduleConfig.files[grunt.config('docs_dir')+'/'+moduleDoc.name+'/index.html'] = 'docs/component_template.html';
 			moduleConfig.options.data = moduleDoc;
 
 			grunt.config.set(["hogan_static","docs_"+moduleDoc.name], moduleConfig);
@@ -158,12 +158,14 @@ module.exports = function(grunt) {
 		files: [ 
 			{ expand: true, cwd: 'docs', src: 'images/**', dest: '<%= docs_dir %>/'},
 			{ expand: true, src: ['bower_components/webcomponentsjs/**', 'bower_components/polymer/**'], dest: '<%= docs_dir %>'},
-			{ src: 'LICENSE.txt', dest: '<%= docs_dir %>/' },
-			{ src: '<%= build_dir %>/<%= pkg.name %>.html', dest: '<%= docs_dir %>/bower_components/strand/dist/<%= pkg.name %>.html' }
+			{ src: 'LICENSE.txt', dest: '<%= docs_dir %>/' }
 		]
 	});
 
-	grunt.registerTask('docs', ['clean:docs', 'build:dist', 'replace:bower', 'build:docs']);
+	grunt.registerTask('docs', function(){
+		grunt.config('build_dir', grunt.config('docs_dir'));
+		grunt.task.run(['build:dist', 'build:docs', 'connect:docs', 'watch']);
+	});
 
 	grunt.config('gh-pages', {
 		options: {
