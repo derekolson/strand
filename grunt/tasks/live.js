@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 
 	});
 
-	grunt.registerTask('live', ['connect:server','watch']);
+	grunt.registerTask('live', ['default','connect:server','watch']);
 
 	grunt.config.set("watch", {
 		options: {
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
 			tasks: ['vulcanize:jslib'],
 		},
 		docs: {
-			files: ['docs/*', 'src/mm-*/doc.json', 'src/mm-*/example.html'],
+			files: ['docs/**', 'src/mm-*/doc.json', 'src/mm-*/example.html'],
 			tasks: ['build:docs']
 		},
 		index: {
