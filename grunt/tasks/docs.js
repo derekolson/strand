@@ -154,6 +154,8 @@ module.exports = function(grunt) {
 		}
 	});
 
+	grunt.config('clean.docs', '<%= docs_dir %>');
+
 	grunt.config('copy.docs', {
 		files: [ 
 			{ expand: true, cwd: 'docs', src: 'images/**', dest: '<%= docs_dir %>/'},
