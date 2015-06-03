@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 			moduleDoc.modules = moduleList;
 			moduleDoc.articleList = articleList;
 			moduleDoc.articleMap = articleMap;
-			moduleConfig.files[grunt.config('docs_dir')+'/'+moduleDoc.name+'/index.html'] = 'docs/component_template.html';
+			moduleConfig.files[grunt.config('docs_dir')+'/components/'+moduleDoc.name+'/index.html'] = 'docs/component_template.html';
 			moduleConfig.options.data = moduleDoc;
 
 			grunt.config.set(["hogan_static","docs_"+moduleDoc.name], moduleConfig);
@@ -163,7 +163,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('docs', function(){
-		grunt.config('build_dir', grunt.config('docs_dir'));
+		grunt.config('build_dir', grunt.config('docs_dir')+"/components/");
 		grunt.task.run(['build:dist', 'build:docs', 'connect:docs', 'watch']);
 	});
 
