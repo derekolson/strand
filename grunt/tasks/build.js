@@ -50,12 +50,6 @@ module.exports = function(grunt) {
 				}]
 			},
 
-			docs: {
-				files: {
-					'<%= docs_dir %>/docs.css':'docs/docs.scss'
-				}
-			},
-
 			dist: {
 				options: {
 					outputStyle: 'compressed'

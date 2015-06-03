@@ -162,6 +162,12 @@ module.exports = function(grunt) {
 		]
 	});
 
+	grunt.config('sass.docs', {
+		files: {
+			'<%= docs_dir %>/docs.css':'docs/docs.scss'
+		}
+	});
+
 	grunt.registerTask('docs', function(){
 		grunt.config('build_dir', grunt.config('docs_dir')+"/components/");
 		grunt.task.run(['build:dist', 'build:docs', 'connect:docs', 'watch']);
