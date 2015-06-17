@@ -103,74 +103,48 @@
 
 /* layout modes for button */
 /* horizontal */
-:host([layout=hgroup-left]) {
-	.button  {
-		border-radius: 4px 0px 0px 4px;
+:host([layout="horizontal"]) {
+	&:first-of-type {
+		.button {
+			border-radius: 4px 0px 0px 4px;
+		}
+	}
+	
+	&:not(:first-of-type) {
+		margin-left: -1px;
+		.button {
+			border-radius: 0;
+		}
 	}
 
-	.button.opened.bottom {
-		border-radius: 4px 0px 0px 0px;
-	}
-
-	.button.opened.top {
-		border-radius: 0px 0px 0px 4px;
-	}
-}
-
-:host([layout=hgroup-center]) {
-	margin-left: -1px;
-
-	.button {
-		&.opened.bottom,
-		&.opened.top {
-			border-radius: 0px 0px 0px 0px;
+	&:last-of-type {
+		.button {
+			border-radius: 0px 4px 4px 0px;
 		}
 	}
 }
 
-:host([layout=hgroup-right]) {
-	margin-left:-1px;
-
-	.button {
-		border-radius: 0px 4px 4px 0px;
-	}
-
-	.button.opened.bottom {
-		border-radius: 0px 4px 0px 0px;
-	}
-
-	.button.opened.top {
-		border-radius: 0px 0px 4px 0px;
-	}
-}
-
-/* vertical */
-:host([layout=vgroup-top]),
-:host([layout=vgroup-center]),
-:host([layout=vgroup-left]) {
+:host([layout="vertical"]) {
 	.button {
 		@include justify-content(center);
 	}
-}
 
-:host([layout=vgroup-top]) {
-	.button {
-		border-radius: 4px 4px 0px 0px;
+	&:first-of-type {
+		.button {
+			border-radius: 4px 4px 0px 0px;
+		}
 	}
-}
-
-:host([layout=vgroup-center]) {
-	margin-top: -1px;
-
-	.button{
-		border-radius: 0px 0px 0px 0px;
-	}
-}
-
-:host([layout=vgroup-bottom]) {
-	margin-top: -1px;
 	
-	.button {
-		border-radius: 0px 0px 4px 4px;
+	&:not(:first-of-type) {
+		margin-top: -1px;
+		.button {
+			border-radius: 0;
+		}
+	}
+
+	&:last-of-type {
+		.button {
+			border-radius: 0px 0px 4px 4px;
+		}
 	}
 }
